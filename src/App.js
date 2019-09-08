@@ -1,26 +1,65 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'antd/dist/antd.css';
+import { Layout, Breadcrumb, BackTop} from 'antd';
+import Header from "./Header"
+import Position from "./Position"
+import Config from "./config"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    // 挂载滚动监听
+    window.addEventListener('scroll', this.bindScroll)
+  }
+  componentWillUnmount() {
+      // 移除滚动监听
+      window.removeEventListener('scroll', this.bindScroll);
+  }
+  
+  render=()=>(
+    <Layout theme="light">
+        <Position />
+        <Header config={Config.blog.header}></Header>
+
+      <Layout.Content >
+        <Breadcrumb>
+          <Breadcrumb.Item><a href="/">Application Center</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="/">Application Center</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="/">Application Center</a></Breadcrumb.Item>
+        </Breadcrumb>
+        <div >Content</div>
+      </Layout.Content>
+      <BackTop />
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
+      <Layout.Footer >Ant design 2019</Layout.Footer>
+    </Layout>
+    )
 }
 
 export default App;
