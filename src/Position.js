@@ -1,7 +1,5 @@
 import React from 'react';
 import { Progress} from 'antd';
-import 'antd/lib/style/themes/default.less'; 
-import './Mytheme.less';
 
 
 class Position extends React.Component{
@@ -37,11 +35,6 @@ class Position extends React.Component{
             percent={this.state.position} 
             status="active"
             showInfo={false} 
-            strokeColor={{
-                from: "@error-color", 
-                to: "@primary-color", 
-                // direction: "#faad14"
-            }}
             style={{
                 position:"fixed",
                 zIndex:1,
