@@ -1,5 +1,5 @@
 import React from 'react';
-import Config from "./config"
+import Config from "../config"
 import {Avatar} from "antd"
 
 const Style = {
@@ -18,7 +18,5 @@ class AvatarTitle extends React.Component {
         </span>
     )
 }
-export { 
-    AvatarTitle 
-}
+export default AvatarTitle 
 

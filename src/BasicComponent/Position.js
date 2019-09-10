@@ -1,6 +1,6 @@
 import React from 'react';
 import { Progress} from 'antd';
-
+import Config from "../config"
 
 class Position extends React.Component{
     componentDidMount() {
@@ -17,7 +17,6 @@ class Position extends React.Component{
         const scrollTop =   window.pageYOffset
         const clientHeight =  document.body.clientHeight;
         const scrollHeight =  document.body.scrollHeight;
-        console.log(this.state.position);
         var po=scrollTop*100/(scrollHeight-clientHeight)
         this.setState({
             position:po,
@@ -35,10 +34,16 @@ class Position extends React.Component{
             percent={this.state.position} 
             status="active"
             showInfo={false} 
+            strokeColor={{
+                from:Config.color.primaryColor,
+                to:Config.color.secondColor
+            }}
+            
             style={{
                 position:"fixed",
                 zIndex:1,
                 top:"-13px",
+                left: "0px",
                 display:this.state.display,
             }}
             />

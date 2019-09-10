@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout, Menu, Row, Col } from 'antd';
-import { AvatarTitle } from "./AvatarTitle"
+import AvatarTitle from "./AvatarTitle"
 
 const Height = "48px"
 const Style = {
@@ -10,27 +10,24 @@ const Style = {
     },
     AvatarTitle: {
         lineHeight: Height,
+        // margin: "0 auto",
+
     },
-    LayoutHeader: {
-        height: Height,
-    }
 }
 class Header extends React.Component {
     render = () => (
-        <Layout.Header style={Style.LayoutHeader}>
             <Row
                 type="flex"
                 justify="space-around"
             >
-                <Col style={Style.AvatarTitle}>
+                <Col style={Style.AvatarTitle} >
                     <AvatarTitle size="xxxs" />
                 </Col>
-                <Col span={0} sm={1}></Col>
+                <Col xs={24} sm={0} ></Col>
                 <Col >
                     <HeaderMenu nav={this.props.config.nav}></HeaderMenu>
                 </Col>
             </Row>
-        </Layout.Header>
     )
 }
 class HeaderMenu extends React.Component {
