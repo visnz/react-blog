@@ -1,5 +1,5 @@
 import React from 'react';
-import { Timeline,Typography,Tag  } from 'antd';
+import { Timeline,Typography,Tag,Col  } from 'antd';
 import PaddingPlan from "./PaddingPlan"
 
 // <Arch data={[
@@ -8,7 +8,7 @@ import PaddingPlan from "./PaddingPlan"
 // ]}/>
 class Arch extends React.Component {
     render = () => (
-        <div>
+        <Col xs={20} sm={17} md={14} lg={11} xl={8} xxl={6}>
             <Timeline pending="To be done..." reverse="true">
                 {this.props.data.map((e,i)=>(
                     <Timeline.Item key={i}>
@@ -18,7 +18,7 @@ class Arch extends React.Component {
                     </Timeline.Item>
                 ))}
             </Timeline>
-        </div>
+            </Col>
     )
 }
 class ArchCard extends React.Component {

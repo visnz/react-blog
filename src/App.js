@@ -10,14 +10,15 @@ import BlogMenu from "./BasicComponent/BlogMenu"
 import PaddingPlan from "./BasicComponent/PaddingPlan"
 import Footer from "./BasicComponent/Footer"
 import Arch from "./BasicComponent/Arch"
+import Page from "./BasicComponent/Page"
 import DisplayCard from "./BasicComponent/DisplayCard"
 import MDGenerator from "./MDLogic/MDGenerator"
 class App extends React.Component {
   render = () => (
-    <Layout theme="light">
+    <Layout>
       <Layout.Header style={{ height: "100%", }}>
         <Position />
-        <Header config={Config.blog.header}></Header>
+        <Header ></Header>
       </Layout.Header >
 
       <Layout.Content >
@@ -36,21 +37,32 @@ class App extends React.Component {
               </Row>
             </Layout.Content >
 
-            <Layout.Content >
-              {/* <MDGenerator source={require("./posts/HTML5.md")} /> */}
-            </Layout.Content >
 
-            <Layout.Content >
+            {/* <Layout.Content >
+              <MDGenerator source={require("./posts/HTML5.md")} />
+            </Layout.Content > */}
+
+             <Layout.Content >
               <Row type="flex" justify="center" style={{ margin: PaddingPlan["m"] }}>
                 <BlogMenu />
               </Row>
-              <Row type="flex" justify="center" >
-                <Col xs={20} sm={17} md={14} lg={11} xl={8} xxl={6}>
+            </Layout.Content >
+            <Layout.Content > 
+              {this.props.children}
+            </Layout.Content >
+            <Layout.Content > 
+
+
+              {/* <Page type="page" /> */}
+              {/* <Page type="categories" value="运维" /> */}
+              <Page type="tags" value="计算机" />
+                
+            </Layout.Content >
+             {/* <Row type="flex" justify="center" >
                   <Arch data={[
                     { title: "helloworld", date: "June 13 2019", tags: ["Game", "Boy"] },
                     { title: "helloworld", date: "June 13 2019", tags: ["Game", "Boy"] },
                   ]} />
-                </Col>
               </Row>
               <Row
                 type="flex"
@@ -60,45 +72,15 @@ class App extends React.Component {
                   maxWidth: "960px",
                   margin: "0 auto",
                 }}>
-                <Col xs={22} sm={18} md={16}>
                   <DisplayCard data={[
                     { img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png", title: "helloworld", date: "June 13 2019", tags: ["Game", "Boy"], desc: "hello" },
                     { img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png", title: "helloworld", date: "June 13 2019", tags: ["Game", "Boy"], desc: "hello" },
                     { img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png", title: "helloworld", date: "June 13 2019", tags: ["Game", "Boy"], desc: "hello" },
                   ]} />
-                </Col>
               </Row>
-            </Layout.Content >
+            </Layout.Content > */}
+
             <Layout.Content >
-              <div >Content</div>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
-              <p>ssssssssssssssssssssss</p><p>ssssssssssssssssssssss</p>
               <BackTop />
             </Layout.Content >
           </Layout.Content>

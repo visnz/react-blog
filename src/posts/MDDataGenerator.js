@@ -32,15 +32,16 @@ setTimeout(() => {
 
 
 setTimeout(() => {
-    fs.writeFileSync("./MDdata.categories.json", JSON.stringify(sort(AllMDData, "categories")),  () => { })
-    console.log("MDdata.categories.json 写入完毕");
-    console.log("=====================================================");
-
-    fs.writeFileSync("./MDdata.timeline.json", JSON.stringify(sort(AllMDData, "timeline")), () => { })
+    var timeline=sort(AllMDData, "timeline")
+    fs.writeFileSync("./MDdata.timeline.json", JSON.stringify(timeline), () => { })
     console.log("MDdata.timeline.json 写入完毕");
     console.log("=====================================================");
+
+    fs.writeFileSync("./MDdata.categories.json", JSON.stringify(sort(timeline, "categories")),  () => { })
+    console.log("MDdata.categories.json 写入完毕");
+    console.log("=====================================================");
     
-    fs.writeFileSync("./MDdata.tagTable.json", JSON.stringify(sort(AllMDData, "tags")),  () => { })
+    fs.writeFileSync("./MDdata.tagTable.json", JSON.stringify(sort(timeline, "tags")),  () => { })
     console.log("MDdata.tagTable.json 写入完毕");
     console.log("=====================================================");
 }, 4500);
@@ -79,6 +80,7 @@ function getInfo(MDfile, ArrayToSave) {
     var mddata = {}
     mddata.index = index++
     mddata.filePath = MDfile
+
     new Promise((resolve, reject) => {
         fs.readFile(MDfile, 'utf-8', (err, data) => {
             if (err) { reject(err); }
@@ -115,9 +117,11 @@ function getInfo(MDfile, ArrayToSave) {
                     case 'draft':
                         mddata.draft = arr[1] === 'true' ? true : false
                         break;
+                    case 'featuredImage':// 兼容老笔记
                     case 'img':
                         mddata.img = arr[1].substring(1, arr[1].length - 1)
                         break;
+                    case 'description':// 兼容老笔记
                     case 'desc':
                         mddata.desc = arr[1].substring(1, arr[1].length - 1)
                         break;
@@ -127,6 +131,9 @@ function getInfo(MDfile, ArrayToSave) {
                 return 0
             })
             // console.log(mddata);
+            var hreftmp=MDfile.split("\\")
+            mddata.href="/"+mddata.categories+"/"+hreftmp[hreftmp.length-1].split(".")[0]
+
             ArrayToSave.push(mddata)
         })
         .catch((err) => { throw err; })

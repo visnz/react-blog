@@ -2,6 +2,8 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout, Menu, Row, Col } from 'antd';
 import AvatarTitle from "./AvatarTitle"
+import Config from "../config"
+
 
 const Height = "48px"
 const Style = {
@@ -25,7 +27,7 @@ class Header extends React.Component {
                 </Col>
                 <Col xs={24} sm={0} ></Col>
                 <Col >
-                    <HeaderMenu nav={this.props.config.nav}></HeaderMenu>
+                    <HeaderMenu nav={Config.blog.header.nav}></HeaderMenu>
                 </Col>
             </Row>
     )
