@@ -44,6 +44,28 @@ setTimeout(() => {
     fs.writeFileSync("./MDdata.tagTable.json", JSON.stringify(sort(timeline, "tags")),  () => { })
     console.log("MDdata.tagTable.json 写入完毕");
     console.log("=====================================================");
+
+    
+    fs.writeFileSync("./MDdata.mapRorReact.js", 
+        JSON.stringify(renderMapForReact(timeline))
+        .replace('{','const data={')
+        .replace('}','}; export default data;')
+        .replace(/:"require\(/g,':require(')
+        .replace(/\)"/g,')')
+            ,  () => { })
+    console.log("MDdata.mapRorReact.json 写入完毕");
+    console.log("=====================================================");
+
+    fs.writeFileSync("./MDdata.imageMapForReact.js", 
+    JSON.stringify(renderImageMapForReact(timeline))
+    .replace('{','const data={')
+    .replace('}','}; export default data;')
+    .replace(/:"require\(/g,':require(')
+    .replace(/\)"/g,')')
+        ,  () => { })
+    console.log("MDdata.mapRorReact.json 写入完毕");
+    console.log("=====================================================");
+
 }, 4500);
 
 
@@ -80,7 +102,7 @@ function getInfo(MDfile, ArrayToSave) {
     var mddata = {}
     mddata.index = index++
     mddata.filePath = MDfile
-
+    mddata.displayName= path.basename(MDfile).split(".md")[0]
     new Promise((resolve, reject) => {
         fs.readFile(MDfile, 'utf-8', (err, data) => {
             if (err) { reject(err); }
@@ -202,4 +224,19 @@ function sort(data, type) {
             return null
     }
  
+}
+
+function renderMapForReact(data){
+    var map=new Map()
+    for(var i of data){
+        map[i.displayName]="require('"+i.filePath+"')"
+    }
+    return map
+}
+function renderImageMapForReact(data){
+    var map=new Map()
+    for(var i of data){
+        map[i.displayName]="require('"+i.img+"')"
+    }
+    return map
 }

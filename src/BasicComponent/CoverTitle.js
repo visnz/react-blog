@@ -1,10 +1,20 @@
 import React from 'react';
-import { Carousel,Tag,Col,Row,Typography } from 'antd';
+import { Carousel,Tag,Col,Row,Typography,Layout } from 'antd';
+import {xyPlan} from "./Block"
+import timelineMDData from "../posts/MDdata.timeline"
+// import timelineMDData from "../posts/MDdata.formap"
+import { Link } from 'react-router-dom'
 import Config from "../config"
-import PaddingPlan from "./PaddingPlan"
+
 
 const height="200px"
 const Style={
+    Row:{
+        maxWidth:"960px",
+        overflow: "hidden", 
+        margin:"0 auto",
+        padding:xyPlan["l"]
+    },
     Carousel:{
         height:height,
         overflow:"hidden"
@@ -16,46 +26,54 @@ const Style={
     }
 }
 class CoverTitle extends React.Component {
-    render=()=>(
-        <Row 
-            style={{
-                maxWidth:"960px",
-                padding:PaddingPlan["m"],
-            }} 
-            justify="space-around"
-            type="flex">
-            <Col 
-                span={16}
-                type="flexed"
-                >
-                <Carousel autoplay  effect="fade" style={Style.Carousel}>
-                    {Config.blog.coverTitle.carousel.map((e,i)=>(
-                        <div  key={i}>
-                            <a href={e.href}>
-                                <img src={e.src} alt={e.value} style={Style.CarouselImage} />
-                            </a>
-                        </div>
-                    ))}
-                </Carousel>
-            </Col>
-            <Col lg={0} span={24} ></Col>
-            <Col span={8}>
-                <Row style={{padding:PaddingPlan["l"]}}>
-                    <Row style={{padding:PaddingPlan["s"]}}>
-                        <Tag >{Config.blog.coverTitle.tag}</Tag>
+    render=()=>{
+        var picdata=timelineMDData.slice(0,3)
+        var aboutdata=((timelineMDData)=>{
+            for(var i of timelineMDData){
+                if(i.displayName=="about") return i
+            }
+        })(timelineMDData)        
+        return (
+        <Layout.Content>
+            <Row 
+                style={
+                   Style.Row
+                } 
+                justify="center"
+                type="flex">
+                <Col 
+                    xs={22} xl={16} xxl={12}
+                    type="flex"
+                    >
+                    <Carousel autoplay  effect="fade" style={Style.Carousel}>
+                        {picdata.map((e,i)=>(
+                            <div key={i}>
+                                <a href={"/blog/posts/"+e.displayName}>
+                                    <img src={e.img} alt={e.displayName} style={Style.CarouselImage} />
+                                </a>
+                            </div>
+                        ))}
+                    </Carousel>
+                </Col>
+                {/* <Col lg={0} span={24} ></Col> */}
+                <Col xs={18} xl={8} xxl={6}>
+                    <Row style={{padding:xyPlan["m"]}}>
+                        <Row style={{padding:xyPlan["s"]}}>
+                            <Tag >Pin to Top</Tag>
+                        </Row>
+                        <Row style={{padding:xyPlan["s"]}}>
+                            <a href="/blog/posts/about"><Typography.Title level={2}>{aboutdata.title}</Typography.Title></a>
+                        </Row>
+                        <Row style={{padding:xyPlan["s"]}}>
+                            <Typography.Text type="secondary" >{aboutdata.date}</Typography.Text>
+                        </Row>
+                        <Row style={{padding:xyPlan["s"]}}>
+                            <Typography.Text  >{aboutdata.desc}</Typography.Text>
+                        </Row>
                     </Row>
-                    <Row style={{padding:PaddingPlan["s"]}}>
-                        <Typography.Title level={2}>{Config.blog.coverTitle.title}</Typography.Title>
-                    </Row>
-                    <Row style={{padding:PaddingPlan["s"]}}>
-                        <Typography.Text type="secondary" >{Config.blog.coverTitle.date}</Typography.Text>
-                    </Row>
-                    <Row style={{padding:PaddingPlan["s"]}}>
-                        <Typography.Text  >{Config.blog.coverTitle.secondText}</Typography.Text>
-                    </Row>
-                </Row>
-            </Col>
-        </Row>
-    )
+                </Col>
+            </Row>
+        </Layout.Content>
+    )}
 }
 export default CoverTitle;

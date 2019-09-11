@@ -1,66 +1,53 @@
 import React from 'react';
-import { Card, Col, Tag } from 'antd';
-import PaddingPlan from "./PaddingPlan"
+import { Card, Col, Layout,Row } from 'antd';
+import SecondTitle from "./SecondTitle"
+import {xyPlan,yPlan} from "./Block"
+import { Link } from 'react-router-dom'
 const width = 320
 const Style = {
     Card: {
-        // width: width*2+"px",
-        // maxWidth:width+"px",
-        margin: PaddingPlan["l"]
+        margin: xyPlan["s"]
     },
     Image: {
-        // width: width*2+"px",
         height: width + "px",
         objectFit: "cover",
     }
 }
 class DisplayCard extends React.Component {
     render = () => (
-        <Col xs={22} sm={18} md={16}>
+        <Col xs={24} sm={20} md={16}>
             {this.props.data.map((e, i) => (
-                <SingleCard
-                    key={i}
-                    img={e.img}
-                    title={e.title}
-                    desc={e.desc}
-                    tags={e.tags}
-                    date={e.date}
-                    href={e.href}
-                />
+                <Layout.Content key={i}>
+                    <SingleCard data={e}/>
+                    <Row style={yPlan["s"]} />
+                </Layout.Content>
             ))}
         </Col>
     )
 }
 class SingleCard extends React.Component {
     render = () => (
+        <Link to={"/blog/posts/" + this.props.data.displayName}>
             <Card
-                // href={this.props.href}
                 hoverable
                 style={Style.Card}
                 cover={<img alt="example"
-                    src={this.props.img}
+                    src={this.props.data.img}
                     style={Style.Image}
                 />}
             >
                 <Card.Meta
-                    title={this.props.title}
+                    title={this.props.data.title}
                     description={
                         <p>
-                                {this.props.date}{" |   "}
-                                {this.props.tags.map((e, i) => (
-                                    <Tag 
-                                        // href={"/tags/" + e} 
-                                        key={i}>
-                                        {e}
-                                    </Tag>
-                                ))}
+                            <SecondTitle data={this.props.data} />
                             <br />
-                            <br />
-                                {this.props.desc}
+                            {this.props.data.desc}
                         </p>
                     }
                 />
             </Card>
+        </Link>
     )
 }
 export default DisplayCard

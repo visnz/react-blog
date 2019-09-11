@@ -29,7 +29,7 @@ featuredImage: "https://visnonline.oss-cn-shenzhen.aliyuncs.com/pics/dockerswarm
 ### 0. 架构预览（默认）
 
 '|Master|Manager|Worker1|Worker2
----|---|---|---|---
+-|-|-|-|-
 职能|源码/CI/<br>管理机器|集群管理/<br>分发任务|接受工作|接受工作
 系统管理<br>入口|Docker-machine|<-Master|<-Master|<-Master
 集群管理<br>入口||Docker-Swarm|<-Manager|<-Manager
@@ -157,7 +157,7 @@ export CF_Key="" && export CF_Email=""
 #### 2.6 可以访问：
 
 网址|效果
----|---
+-|-
 http://${ACME_DOMAIN}|跳转 https://${ACME_DOMAIN}
 https://hub.${ACME_DOMAIN}|gitea
 https://drone.${ACME_DOMAIN}|droneCI

@@ -2,6 +2,7 @@ import React from 'react';
 
 class Footer extends React.Component {
     render = () => (
+
         <div style={{textAlign:"center"}}>
             <small>© 2017–2019 Visnz </small><br/>
             <small>Design by Visnz  |  Power by React</small><br/>

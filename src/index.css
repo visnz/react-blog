@@ -20,3 +20,6 @@ pre{
   background: #ddd;
   padding:6px 10px
 }
+main img{
+  width: 100%;
+}

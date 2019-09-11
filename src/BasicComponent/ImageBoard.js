@@ -1,24 +1,13 @@
 import React from 'react';
 import Config from "../config"
-import { Popover, Button, Row, Typography,Icon,Col } from 'antd';
+import { Popover, Button, Row, Typography,Icon,Col,Layout } from 'antd';
+import { yPlan } from './Block';
 
 const Style = {
     ContactIcon: {
         width: "20px",
         margin: "0 1px",
         color:Config.color.white
-    },
-    BlockL: {
-        marginTop: "128px",
-        marginButton: "128px",
-    },
-    BlockM: {
-        marginTop: "64px",
-        marginButton: "64px",
-    },
-    BlockS: {
-        marginTop: "32px",
-        marginButton: "32px",
     },
     Title: {
         fontWeight: "1",
@@ -32,10 +21,11 @@ class ImageBoard extends React.Component {
         this.ref = ref => {this.refDom = ref};
     }
     calWidthToOffset(){
-        var width=this.refDom.clientWidth;
+        var width=window.clientWidth;
+        // var width=this.refDom.clientWidth;
         var d=width-1600
         var r=0.5
-        var offset=100
+        var offset=120
         this.setState({
             backgroundPositionY:"-"+(offset+(d>0?d*r:0))+"px"
         })
@@ -56,7 +46,7 @@ class ImageBoard extends React.Component {
         // var style=Style.Background
         // style.backgroundPositionY=this.state.backgroundPositionY
         return (
-        <div style={{
+        <Layout.Content style={{
             width: "100%",
             height: "100%",
             backgroundSize: "cover",
@@ -67,10 +57,9 @@ class ImageBoard extends React.Component {
             backgroundPositionX: "center"
         }} ref={this.ref}>
             <Row ></Row>
-            <Row style={Style.BlockS}></Row>
-            <Row style={Style.BlockM}></Row>
+            <Row style={yPlan["l"]} />
 
-            <Row style={Style.BlockL}>
+            <Row style={yPlan["xl"]}>
                 <Row type="flex" justify="space-around">
                     <Typography.Text type="secondary">_Shut up and take my money_</Typography.Text>
                 </Row>
@@ -81,8 +70,8 @@ class ImageBoard extends React.Component {
                     <Contact />
                 </Row>
             </Row>
-            <Row style={Style.BlockM}></Row>            
-            <Row style={Style.BlockL}>                    
+            <Row style={yPlan["l"]} />
+            <Row style={yPlan["xl"]}>                    
                 <Row type="flex" justify="start">
                     <Col span={1}></Col>
                     <Col>
@@ -98,8 +87,8 @@ class ImageBoard extends React.Component {
                     </Col>
                 </Row>
             </Row>
-            <Row style={Style.BlockS}></Row>
-        </div>
+            <Row style={yPlan["s"]}></Row>
+        </Layout.Content>
     )}
 }
 

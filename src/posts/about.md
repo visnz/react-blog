@@ -4,7 +4,7 @@ date: 2018-01-15
 tags: ["about"]
 collection: about
 desc: "More about me"
-draft: true
+# draft: true
 img: "https://visnonline.oss-cn-shenzhen.aliyuncs.com/pics/oldicon/avater.jpg"
 ---
   
@@ -22,19 +22,20 @@ img: "https://visnonline.oss-cn-shenzhen.aliyuncs.com/pics/oldicon/avater.jpg"
 
 
 
-## Tags
+## 技能 Tags
 
-icon|\# 技能 \# |
----|---
-🐋|Docker相关|
-☯️|DaVinci & AE|
-📷|拍照修图|
-💻|~~电脑维修~~|
-🎲|游戏设计|
+|icon|\# 技能 \# |
+|-|-|
+|🐋|Docker相关|
+|☯|DaVinci & AE|
+|📷|拍照修图|
+|💻|~~电脑维修~~|
+|🎲|游戏设计|
 
+## 日常 Tags
 
 icon|\# 日常 \# 
----|---
+-|-
 🍹|咖啡手冲 & 冷饮|
 🗑|电子垃圾收集者|
 🍽|Ingress AFK_ENL|

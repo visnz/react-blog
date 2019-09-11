@@ -1,36 +1,46 @@
 import React from 'react';
-import { Timeline,Typography,Tag,Col  } from 'antd';
-import PaddingPlan from "./PaddingPlan"
-
-// <Arch data={[
-//     {title:"helloworld",date:"June 13 2019",tags:["Game","Boy"],href:"/"},
-//     {title:"helloworld",date:"June 13 2019",tags:["Game","Boy"],href:"/"},
-// ]}/>
+import { Timeline, Typography, Tag, Col, Row, Layout } from 'antd';
+import { Link } from 'react-router-dom'
+import SecondTitle from "./SecondTitle"
+import {xyPlan, Block} from "./Block"
+import timelineMDData from "../posts/MDdata.timeline"
+// 
+//     <Arch />
+// 
 class Arch extends React.Component {
     render = () => (
-        <Col xs={20} sm={17} md={14} lg={11} xl={8} xxl={6}>
-            <Timeline pending="To be done..." reverse="true">
-                {this.props.data.map((e,i)=>(
-                    <Timeline.Item key={i}>
-                        <a href={e.href}>
-                            <ArchCard title={e.title} date={e.date} tags={e.tags} />
-                        </a>
-                    </Timeline.Item>
-                ))}
-            </Timeline>
-            </Col>
+        <Layout.Content >
+            <Row type="flex" justify="center" >
+                {/* <Col xs={20} sm={17} md={14} lg={11} xl={8} xxl={6}> */}
+                <Col xs={20} sm={18} md={16} lg={14} xl={12} xxl={10}>
+                    <Timeline>
+                        {timelineMDData.map((e, i) => (
+                            <Timeline.Item key={i}>
+                                {/* <a href={e.href}> */}
+                                    <ArchCard
+                                        data={e}
+                                    />
+                                {/* </a> */}
+                            </Timeline.Item>
+                        ))}
+                    </Timeline>
+                </Col>
+            </Row>
+        </Layout.Content >
     )
 }
 class ArchCard extends React.Component {
-    render=()=>(
+    render = () => (
         <div >
-            <div style={{margin:PaddingPlan["xs"]}}>
-                <Typography.Text type="secondary" >{this.props.date}</Typography.Text>
-                <Typography.Text  > | {this.props.tags.map((e,i)=>(
-                    <Tag key={i} >{e}</Tag>
-                    ))}</Typography.Text>
+            <div style={{ margin: xyPlan["xs"] }}>
+                <SecondTitle data={this.props.data} />
             </div>
-            <Typography.Title level={3} style={{margin:PaddingPlan["xs"]}}>{this.props.title}</Typography.Title>
+            <Link to={"/blog/posts/"+this.props.data.displayName}>
+                <Typography.Title 
+                level={4} 
+                style={{ margin: xyPlan["xs"] }}>{this.props.data.title}
+                </Typography.Title>
+            </Link>
         </div>
     )
 }
