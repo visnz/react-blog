@@ -1,5 +1,5 @@
 build-ghpage:
-    box: nodejs
+    box: node
     steps:
         - script:
           name: get blog
