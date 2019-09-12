@@ -1,0 +1,26 @@
+build-ghpage:
+    box: node
+    steps:
+        - script:
+          name: get blog
+          code: |
+            git clone https://github.com/visnz/react-blog && cd react-blog
+        - script:
+          name: npm install
+          code: |
+            npm install
+        - script:
+          name: build
+          code: |
+            node src/posts/MDDataGenerator.js src/posts/ && CI=false npm run build.
+
+deploy:
+    box: debian
+    steps:
+        - install-packages:
+            packages: git ssh-client
+        - lukevivier/gh-pages:
+            token: $GITHUB_TOKEN
+            domain: visn.online
+            basedir: build
+            repo: visnz/visnz.github.io
