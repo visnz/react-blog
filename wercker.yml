@@ -22,5 +22,5 @@ deploy:
         - lukevivier/gh-pages:
             token: $GITHUB_TOKEN
             domain: visn.online
-            basedir: public
+            basedir: build
             repo: visnz/visnz.github.io
