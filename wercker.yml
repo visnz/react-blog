@@ -12,7 +12,7 @@ build-ghpage:
         - script:
           name: build
           code: |
-            node src/posts/MDDataGenerator.js src/posts/ && npm run build
+            node src/posts/MDDataGenerator.js src/posts/ && CI=false npm run build.
 
 deploy:
     box: debian
