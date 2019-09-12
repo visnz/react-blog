@@ -14,7 +14,12 @@ var path = require('path');
 var filter = new RegExp('.md$');
 
 var fileList = [] // 获取文件列表
-fileDisplay(path.resolve('.'))
+var args = process.argv.splice(2)
+if(args==0){
+    console.log("参数不能为空");
+    return 0
+}
+fileDisplay(path.resolve(args[0]))
 console.log("文件列表 获取完毕");
 
 var AllMDData = [] // 获取文件元数据
@@ -25,7 +30,7 @@ setTimeout(() => {
 
 
 setTimeout(() => {
-    fs.writeFile("./MDdata.json", JSON.stringify(AllMDData), () => { })
+    fs.writeFile(args[0]+"/MDdata.json", JSON.stringify(AllMDData), () => { })
     console.log("MDdata.json 写入完毕");
 }, 3000);
 
@@ -33,20 +38,20 @@ setTimeout(() => {
 
 setTimeout(() => {
     var timeline=sort(AllMDData, "timeline")
-    fs.writeFileSync("./MDdata.timeline.json", JSON.stringify(timeline), () => { })
+    fs.writeFileSync(args[0]+"/MDdata.timeline.json", JSON.stringify(timeline), () => { })
     console.log("MDdata.timeline.json 写入完毕");
     console.log("=====================================================");
 
-    fs.writeFileSync("./MDdata.categories.json", JSON.stringify(sort(timeline, "categories")),  () => { })
+    fs.writeFileSync(args[0]+"/MDdata.categories.json", JSON.stringify(sort(timeline, "categories")),  () => { })
     console.log("MDdata.categories.json 写入完毕");
     console.log("=====================================================");
     
-    fs.writeFileSync("./MDdata.tagTable.json", JSON.stringify(sort(timeline, "tags")),  () => { })
+    fs.writeFileSync(args[0]+"/MDdata.tagTable.json", JSON.stringify(sort(timeline, "tags")),  () => { })
     console.log("MDdata.tagTable.json 写入完毕");
     console.log("=====================================================");
 
     
-    fs.writeFileSync("./MDdata.mapRorReact.js", 
+    fs.writeFileSync(args[0]+"/MDdata.mapRorReact.js", 
         JSON.stringify(renderMapForReact(timeline))
         .replace('{','const data={')
         .replace('}','}; export default data;')
@@ -56,7 +61,7 @@ setTimeout(() => {
     console.log("MDdata.mapRorReact.json 写入完毕");
     console.log("=====================================================");
 
-    fs.writeFileSync("./MDdata.imageMapForReact.js", 
+    fs.writeFileSync(args[0]+"/MDdata.imageMapForReact.js", 
     JSON.stringify(renderImageMapForReact(timeline))
     .replace('{','const data={')
     .replace('}','}; export default data;')
