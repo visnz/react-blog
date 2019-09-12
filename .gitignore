@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+src/posts/MDdata.timeline.json
+src/posts/MDdata.tagTable.json
+src/posts/MDdata.mapRorReact.js
+src/posts/MDdata.categories.json
+src/posts/MDdata.imageMapForReact.js
+src/posts/MDdata.json
