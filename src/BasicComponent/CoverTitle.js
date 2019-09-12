@@ -2,9 +2,9 @@ import React from 'react';
 import { Carousel,Tag,Col,Row,Typography,Layout } from 'antd';
 import {xyPlan} from "./Block"
 import timelineMDData from "../posts/MDdata.timeline"
+import Config from "../config"
 // import timelineMDData from "../posts/MDdata.formap"
 import { Link } from 'react-router-dom'
-import Config from "../config"
 
 
 const height="200px"
@@ -48,8 +48,9 @@ class CoverTitle extends React.Component {
                     <Carousel autoplay  effect="fade" style={Style.Carousel}>
                         {picdata.map((e,i)=>(
                             <div key={i}>
-                                <a href={"/blog/posts/"+e.displayName}>
+                                <a href={Config.blog.path+"/posts/"+e.displayName}>
                                     <img src={e.img} alt={e.displayName} style={Style.CarouselImage} />
+                                    <h1>helloworld</h1>
                                 </a>
                             </div>
                         ))}
@@ -62,7 +63,7 @@ class CoverTitle extends React.Component {
                             <Tag >Pin to Top</Tag>
                         </Row>
                         <Row style={{padding:xyPlan["s"]}}>
-                            <a href="/blog/posts/about"><Typography.Title level={2}>{aboutdata.title}</Typography.Title></a>
+                            <a href={Config.blog.path+"/posts/about"}><Typography.Title level={2}>{aboutdata.title}</Typography.Title></a>
                         </Row>
                         <Row style={{padding:xyPlan["s"]}}>
                             <Typography.Text type="secondary" >{aboutdata.date}</Typography.Text>

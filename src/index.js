@@ -4,15 +4,14 @@ import './index.css';
 import Header from "./BasicComponent/Header"
 import Footer from "./BasicComponent/Footer"
 import Position from "./BasicComponent/Position"
-import { Layout, } from 'antd';
 import Blog from './Blog';
 // import MDdata from './MDLogic/MDdata';
 import { BrowserRouter , Route,IndexRoute } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
-import DisplayCard from "./BasicComponent/DisplayCard.js"
-import AllMDData from "./posts/MDdata.timeline"
-import Page from './BasicComponent/Page';
+import ImageBoard from "./BasicComponent/ImageBoard"
+import Config from "./config"
 
+import { BackTop } from 'antd';
 
 ReactDOM.render((
     // <Layout>
@@ -24,13 +23,10 @@ ReactDOM.render((
     <BrowserRouter>
         <Route path="/" component={Position}/>
         <Route path="/" component={Header}/>
-        <Route path="/blog/" component={Blog}>
-        {/* <Route path="/CDN" component={Blog}> */}
-        {/* <Route path="about" component={About} />
-        <Route path="inbox" component={Inbox}>
-            <Route path="messages/:id" component={Message} />
-        </Route> */}
+        <Route exact path='/' component={ImageBoard} />
+        <Route path={Config.blog.path+'/'} component={Blog}>
         </Route>
+        <Route path="/" component={BackTop}/>
         <Route path="/" component={Footer}/>
     </BrowserRouter>
     
@@ -45,4 +41,4 @@ ReactDOM.render((
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();

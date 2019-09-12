@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Layout,Row } from 'antd';
 import SecondTitle from "./SecondTitle"
+import Config from "../config"
 import {xyPlan,yPlan} from "./Block"
 import { Link } from 'react-router-dom'
 const width = 320
@@ -27,7 +28,7 @@ class DisplayCard extends React.Component {
 }
 class SingleCard extends React.Component {
     render = () => (
-        <Link to={"/blog/posts/" + this.props.data.displayName}>
+        <Link to={Config.blog.path+"/posts/" + this.props.data.displayName}>
             <Card
                 hoverable
                 style={Style.Card}

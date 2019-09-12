@@ -5,13 +5,14 @@ import {xyPlan, Block} from "./Block"
 import { Link  } from 'react-router-dom'
 import timelineMDData from "../posts/MDdata.timeline"
 import categoriesMDData from "../posts/MDdata.categories"
+import Config from "../config"
 import tagsMDData from "../posts/MDdata.tagTable"
 var menu=[
-    {value:"Home",icon:"home",href:"/blog/",count:"0"},
-    {value:"Archive",icon:"inbox",href:"/blog/archive",count:timelineMDData.length},
+    {value:"Home",icon:"home",href:Config.blog.path+"/",count:"0"},
+    {value:"Archive",icon:"inbox",href:Config.blog.path+"/archive",count:timelineMDData.length},
     // {value:"Tags",icon:"tags",href:"/",count:Object.getOwnPropertyNames(tagsMDData).length},
     // {value:"categories",icon:"appstore",href:"/",count:Object.getOwnPropertyNames(categoriesMDData).length},
-    {value:"About",icon:"user",href:"/blog/posts/about",count:""},
+    {value:"About",icon:"user",href:Config.blog.path+"/posts/about",count:""},
 ]
 class BlogMenu extends React.Component {
     state = {

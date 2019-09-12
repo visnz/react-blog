@@ -1,5 +1,6 @@
 import React from 'react';
 import Config from "../config"
+import { Link } from 'react-router-dom'
 import {Avatar} from "antd"
 
 const Style = {
@@ -11,7 +12,7 @@ const Style = {
 class AvatarTitle extends React.Component {
     render = () => (
         <span>
-            <a href="/"><Avatar src={Config.blog.avatar} /></a>
+            <Link to="/"><Avatar src={Config.blog.avatar} /></Link>
             <span style={Style.Title}>
                 {Config.blog.title}
             </span>

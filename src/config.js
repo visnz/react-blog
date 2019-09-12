@@ -1,15 +1,16 @@
 
 const config={
     blog:{
+        path:"",
         avatar:require("./assets/img/avatar/mini_avatar.jpg"),
         title:"The While Parties",
         background:require("./assets/img/bg/bg.jpg"),
         header:{
             nav:[
-                {value:'Blog',href: '/blog'},
+                {value:'Blog',href: '/'},
                 {value:'CDN',href: '/CDN'},
                 {value:'ToolBox',href: '/ToolBox'},
-                {value:'About',href: '/blog/posts/about'}
+                {value:'About',href: '/posts/about'}
             ],
         },
         contact:{

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Timeline, Typography, Tag, Col, Row, Layout } from 'antd';
 import { Link } from 'react-router-dom'
+import Config from "../config"
 import SecondTitle from "./SecondTitle"
 import {xyPlan, Block} from "./Block"
 import timelineMDData from "../posts/MDdata.timeline"
@@ -35,7 +36,7 @@ class ArchCard extends React.Component {
             <div style={{ margin: xyPlan["xs"] }}>
                 <SecondTitle data={this.props.data} />
             </div>
-            <Link to={"/blog/posts/"+this.props.data.displayName}>
+            <Link to={Config.blog.path+"/posts/"+this.props.data.displayName}>
                 <Typography.Title 
                 level={4} 
                 style={{ margin: xyPlan["xs"] }}>{this.props.data.title}
