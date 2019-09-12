@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-blog
 
-## Available Scripts
+[![wercker status](https://app.wercker.com/status/b6a0cd5ac8c225f9e0a3126777285bd4/m/master "wercker status")](https://app.wercker.com/project/byKey/b6a0cd5ac8c225f9e0a3126777285bd4)
 
-In the project directory, you can run:
+基于[Create React App](https://github.com/facebook/create-react-app)新博客repo，旧repo于[这里](https://github.com/visnz/blog)。
 
-### `npm start`
+目前从域名[blog.guediao.top](https://blog.guediao.top)访问。另外可访问[团队站点](https://guediao.top)，服务器套了一层阿里云CDN。
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## TODO
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- [ ] 从react工程转化为静态页面还未完成，GithubPage还未能使用
+- [ ] 图片使用了oss，oss部分的功能还未同步过来
 
-### `npm test`
+## 本地化工程
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm install
+# 安装依赖
+node src/posts/MDDataGenerator.js src/posts/
+# 构建博客文件的元数据（md文章的头部元数据）
+# 元数据初次创建时，本地化测试需要生成
+npm start
+# 启动本地服务器
+```
 
-### `npm run build`
+## 部署
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+docker镜像: ``registry.cn-hangzhou.aliyuncs.com/visnz-self/react-blog``
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```sh
+sudo docker run -dit -p 80:80 registry.cn-hangzhou.aliyuncs.com/visnz-self/react-blog:latest
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+访问[http://localhost](http://localhost)
 
-### `npm run eject`
+## release notes
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- 2019-09-12:
+  - [Dockerfile](./Dockerfile)封装完成，交由阿里云镜像构建+托管
+  - [wercker](./wercker.yml)封装完成，包含Dockerfilie同内容的构建，以及gh-page的push
+  
