@@ -1,4 +1,4 @@
-build-ghpage:
+build-master:
     box: node
     steps:
         - script:
@@ -12,7 +12,23 @@ build-ghpage:
         - script:
           name: build
           code: |
-            node src/posts/MDDataGenerator.js src/posts/ && CI=false npm run build.
+            node src/posts/MDDataGenerator.js src/posts/ && npm run build
+
+build-dev:
+    box: node
+    steps:
+        - script:
+          name: get blog
+          code: |
+            git clone https://github.com/visnz/react-blog && cd react-blog
+        - script:
+          name: npm install
+          code: |
+            npm install
+        - script:
+          name: build
+          code: |
+            node src/posts/MDDataGenerator.js src/posts/ && npm run build.
 
 deploy:
     box: debian
