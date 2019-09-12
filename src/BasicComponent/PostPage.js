@@ -12,8 +12,8 @@ class PostPage extends React.Component {
 
     render = () => {
         for (var i of timelineMDData) {
-            // console.log(i,this.state.displayName);
-            if (i.displayName == this.state.displayName) {
+            console.log(i,this.state.displayName);
+            if (i.displayName === this.state.displayName) {
                 return (
                     <Layout.Content >
                         <Row type="flex" justify="center" >

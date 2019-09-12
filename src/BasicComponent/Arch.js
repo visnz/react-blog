@@ -1,9 +1,9 @@
 import React from 'react';
-import { Timeline, Typography, Tag, Col, Row, Layout } from 'antd';
+import { Timeline, Typography, Col, Row, Layout } from 'antd';
 import { Link } from 'react-router-dom'
 import Config from "../config"
 import SecondTitle from "./SecondTitle"
-import {xyPlan, Block} from "./Block"
+import {xyPlan} from "./Block"
 import timelineMDData from "../posts/MDdata.timeline"
 // 
 //     <Arch />

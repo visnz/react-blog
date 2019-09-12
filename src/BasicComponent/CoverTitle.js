@@ -3,10 +3,6 @@ import { Carousel,Tag,Col,Row,Typography,Layout } from 'antd';
 import {xyPlan} from "./Block"
 import timelineMDData from "../posts/MDdata.timeline"
 import Config from "../config"
-// import timelineMDData from "../posts/MDdata.formap"
-import { Link } from 'react-router-dom'
-
-
 const height="200px"
 const Style={
     Row:{
@@ -30,7 +26,7 @@ class CoverTitle extends React.Component {
         var picdata=timelineMDData.slice(0,3)
         var aboutdata=((timelineMDData)=>{
             for(var i of timelineMDData){
-                if(i.displayName=="about") return i
+                if(i.displayName==="about") return i
             }
         })(timelineMDData)        
         return (

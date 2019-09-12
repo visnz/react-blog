@@ -6,7 +6,7 @@ import Footer from "./BasicComponent/Footer"
 import Position from "./BasicComponent/Position"
 import Blog from './Blog';
 // import MDdata from './MDLogic/MDdata';
-import { BrowserRouter , Route,IndexRoute } from 'react-router-dom'
+import { BrowserRouter , Route } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import ImageBoard from "./BasicComponent/ImageBoard"
 import Config from "./config"

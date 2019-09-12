@@ -1,12 +1,10 @@
 import React from 'react';
-import { Icon, Tabs, Layout, Row, Badge,Menu  } from 'antd';
-import {xyPlan, Block} from "./Block"
+import { Icon, Layout, Row, Badge,Menu  } from 'antd';
+import {xyPlan} from "./Block"
 // import Config from "../config"
 import { Link  } from 'react-router-dom'
 import timelineMDData from "../posts/MDdata.timeline"
-import categoriesMDData from "../posts/MDdata.categories"
 import Config from "../config"
-import tagsMDData from "../posts/MDdata.tagTable"
 var menu=[
     {value:"Home",icon:"home",href:Config.blog.path+"/",count:"0"},
     {value:"Archive",icon:"inbox",href:Config.blog.path+"/archive",count:timelineMDData.length},

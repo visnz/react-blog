@@ -2,7 +2,7 @@ import React from 'react';
 import map from "../posts/MDdata.mapRorReact"
 import SecondTitle from "./SecondTitle"
 import ReactMarkdown from 'react-markdown';
-import { Timeline, Typography, Tag, Col, Row, Layout } from 'antd';
+import {Typography} from 'antd';
 class MDGenerator extends React.Component {
     preduceMDData(data) {
         var tmp = data.split('---')

@@ -3,7 +3,7 @@ import { Pagination, Col, Row,Layout } from 'antd';
 import DisplayCard from "./DisplayCard.js"
 import timelineMDData from "../posts/MDdata.timeline"
 import categoriesMDData from "../posts/MDdata.categories"
-import {xyPlan, Block} from "./Block"
+import {xyPlan} from "./Block"
 import tagsMDData from "../posts/MDdata.tagTable"
     // type=  page/categories/tags
     // value=  
